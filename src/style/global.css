@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100vw;
+  background-color: #222222;
+  color: aliceblue;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  box-sizing: border-box;
+}
+
+.stpad {
+  padding: 0 10px 0 10px;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+}
+
+/* MAIN */
+
+main {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: #111;
+}
+
+#menu_tools {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+#canvas_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: greenyellow;
+  overflow: hidden;
+}
+
+#canvas {
+  display: block;
+  position: absolute; /* ← evita quebra de layout */
+  top: 0;
+  left: 0;
+  background-color: blueviolet;
+}
+
+#statusbar {
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+/* FOOTER */
+
+footer {
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #444;
+}
+
+footer #copyright {
+  font-size: 10px;
+}
