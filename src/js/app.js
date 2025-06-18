@@ -4,11 +4,6 @@ var frame = 0;
 
 var stars = [];
 
-stars.push(new Star(0, 0, 400, 400));
-stars.push(new Star(401, 0, 400, 400));
-stars.push(new Star(0, 401, 400, 400));
-stars.push(new Star(401, 401, 400, 400));
-
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
@@ -28,6 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(canvas.parentElement);
 
   resizeCanvas();
+  var dim = canvas.width / 5;
+
+  for (var i = 0; i <= 4; i++) {
+    stars.push(new Star(i * dim, 0, dim, dim));
+    stars.push(new Star(i * dim, dim, dim, dim));
+  }
 
   function update() {
     frame++;
