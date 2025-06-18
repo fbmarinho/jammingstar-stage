@@ -6,30 +6,54 @@ class Star {
     note: "./assets/scales/cromatic/noteon.png",
   };
 
+  notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+  pressed = [];
+  transpose = 0;
+
   constructor(x, y, w, h) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
-    this.angle = 0;
     this.drawable = false;
     this.#load();
   }
+
   draw(ctx) {
     if (this.drawable) {
       ctx.drawImage(this.images.disc, this.x, this.y, this.w, this.h);
       ctx.drawImage(this.images.mask, this.x, this.y, this.w, this.h);
       ctx.drawImage(this.images.star, this.x, this.y, this.w, this.h);
 
-      ctx.save();
+      for (var i = 0; i <= 11; i++) {
+        var angle = ((-60 + i * 30) * Math.PI) / 180;
 
-      ctx.translate(this.w / 2, this.h / 2);
-      ctx.rotate((60 * Math.PI) / 180);
+        ctx.save();
 
-      ctx.drawImage(this.images.note, -this.w / 2, -this.h / 2, this.w, this.h);
+        ctx.translate(this.w / 2, this.h / 2);
+        ctx.rotate(angle + this.transpose);
 
-      ctx.restore();
+        if (this.pressed.includes(this.notes[i])) {
+          ctx.drawImage(
+            this.images.note,
+            -this.w / 2,
+            -this.h / 2,
+            this.w,
+            this.h
+          );
+        }
+
+        ctx.restore();
+      }
     }
+  }
+
+  SetPressed(notes) {
+    this.pressed = notes;
+  }
+
+  ClearPressed() {
+    this.pressed.Clear();
   }
 
   async #load() {

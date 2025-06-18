@@ -1,11 +1,11 @@
 import Star from "./star.js";
 
 var frame = 0;
-const star = new Star(0, 0, 200, 200);
+
+const star = new Star(0, 0, 400, 400);
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("canvas");
-
   const ctx = canvas.getContext("2d");
 
   function resizeCanvas() {
@@ -26,9 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function update() {
     frame++;
+    star.SetPressed(pressednotes);
   }
 
-  // Renderização
+  // Renderização do stage
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     star.draw(ctx);
@@ -37,11 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillText(frame, canvas.width - 10, canvas.height - 10);
   }
 
-  function gameLoop() {
+  function drawLoop() {
     update();
     draw();
-    requestAnimationFrame(gameLoop);
+    requestAnimationFrame(drawLoop);
   }
 
-  gameLoop();
+  drawLoop();
 });
