@@ -30,7 +30,7 @@ class Star {
 
         ctx.save();
 
-        ctx.translate(this.w / 2, this.h / 2);
+        ctx.translate(this.x + this.w / 2, this.y + this.h / 2);
         ctx.rotate(angle + this.transpose);
 
         if (this.pressed.includes(this.notes[i])) {

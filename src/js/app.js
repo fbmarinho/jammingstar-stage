@@ -2,7 +2,12 @@ import Star from "./star.js";
 
 var frame = 0;
 
-const star = new Star(0, 0, 400, 400);
+var stars = [];
+
+stars.push(new Star(0, 0, 400, 400));
+stars.push(new Star(401, 0, 400, 400));
+stars.push(new Star(0, 401, 400, 400));
+stars.push(new Star(401, 401, 400, 400));
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("canvas");
@@ -26,13 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function update() {
     frame++;
-    star.SetPressed(pressednotes);
+    stars.forEach((star) => star.SetPressed(pressednotes));
   }
 
   // Renderização do stage
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    star.draw(ctx);
+    stars.forEach((star) => star.draw(ctx));
     ctx.fillStyle = "white";
     ctx.textAlign = "right";
     ctx.fillText(frame, canvas.width - 10, canvas.height - 10);
