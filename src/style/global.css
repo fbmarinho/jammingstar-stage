@@ -60,7 +60,6 @@ main {
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: greenyellow;
   overflow: hidden;
 }
 
@@ -69,7 +68,6 @@ main {
   position: absolute; /* ← evita quebra de layout */
   top: 0;
   left: 0;
-  background-color: blueviolet;
 }
 
 #statusbar {
